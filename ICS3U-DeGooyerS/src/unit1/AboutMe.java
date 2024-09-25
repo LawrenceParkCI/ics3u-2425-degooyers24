@@ -9,6 +9,7 @@ public class AboutMe {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		// This prints information about myself, my teacher and my school
 		System.out.println(" ______________________________________________________");
 		System.out.println("|                                                      |");
 		System.out.println("| INFORMATION:                                         |");
@@ -18,6 +19,7 @@ public class AboutMe {
 		System.out.println("| School == Lawrence Park Collegiate Institute         |");
 		System.out.println("| Go Panthers!                                         |");
 		System.out.println("|                                                      |");
+		// This uses format to input different classes, alongside their starting and ending times.
 		System.out.println("| Day 1: Monday, Friday                                |");
 		System.out.format("| Class: %-8sStart Time: %-8sEnd Time: %-8s|", "ICS3U", "09:00", "10:15");
 		System.out.println(" ");
