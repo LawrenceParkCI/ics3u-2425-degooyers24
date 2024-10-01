@@ -35,7 +35,7 @@ public class MathOperators {
 	    System.out.println("900 degrees fahrenheit is approximateley " + fahrenheitToCelsius + " degrees in celsius.");
 	    // It is impossible to acquire an exact conversion as there are too many decimal places in the conversion rate.
 	    
-	    System.out.println("The % operator, also known as mod, or modulus, performs division with integers, but only gives the remainder.");
+	    System.out.println("I think the % operator, also known as mod, or modulus, performs division with integers, but only gives the remainder.");
 	    
 	    int modTest = 11 % 2;
 	    
