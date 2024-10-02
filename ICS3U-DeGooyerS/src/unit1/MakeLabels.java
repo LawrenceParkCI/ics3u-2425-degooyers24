@@ -13,22 +13,22 @@ public class MakeLabels {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner (System.in);
 		
-		String name;
+		// declaring variables
+		String name, subject;
 		
+		// getting user input
 		System.out.println("Type in your name and press <Enter>");
-		name = sc.nextLine(); // this takes the user's name and converts it into a string variable
-		
-		String subject;
+		name = sc.nextLine(); 
 		
 		System.out.println("Type in the subject and press <Enter>");
-		subject = sc.nextLine(); // this takes the user's subject and turns it to a string variable
+		subject = sc.nextLine(); 
 		
+		//printing input
 		System.out.println();
 		System.out.println("******************************");
 		System.out.println(name);
 		System.out.println(subject);
 		System.out.println("******************************");
-		// this print the user's name and subject
 		sc.close();
 		
 
