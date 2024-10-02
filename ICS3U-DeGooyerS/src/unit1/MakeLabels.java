@@ -16,18 +16,20 @@ public class MakeLabels {
 		String name;
 		
 		System.out.println("Type in your name and press <Enter>");
-		name = sc.nextLine();
+		name = sc.nextLine(); // this takes the user's name and converts it into a string variable
 		
 		String subject;
 		
 		System.out.println("Type in the subject and press <Enter>");
-		subject = sc.nextLine();
+		subject = sc.nextLine(); // this takes the user's subject and turns it to a string variable
 		
 		System.out.println();
 		System.out.println("******************************");
 		System.out.println(name);
 		System.out.println(subject);
 		System.out.println("******************************");
+		// this print the user's name and subject
+		sc.close();
 		
 
 	}
