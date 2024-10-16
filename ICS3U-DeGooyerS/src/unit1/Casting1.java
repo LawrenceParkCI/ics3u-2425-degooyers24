@@ -59,13 +59,17 @@ public class Casting1 {
 
 		    //understanding what you can do with casting, can you round the following variable to the nearest 10th?
 		    double myNum;
+		    double castedNum;
 		    
 		    Scanner in = new Scanner(System.in);
 		    System.out.println("Give me decimal number up to the hundredth");
 		    //code
 		    myNum = in.nextDouble();
+		    castedNum = 10 * myNum;
+		    castedNum = Math.rint(castedNum);
+		    castedNum = castedNum / 10.0;
 
-		    System.out.print("Rounding down to the nearest tenth, it is: ");
+		    System.out.print("Rounding to the nearest tenth, it is: " + castedNum);
 		    in.close();
 	}
 
