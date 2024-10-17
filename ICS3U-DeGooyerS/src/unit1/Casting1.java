@@ -67,9 +67,9 @@ public class Casting1 {
 		    myNum = in.nextDouble();
 		    castedNum = 10 * myNum;
 		    castedNum = Math.rint(castedNum);
-		    castedNum = castedNum / 10.0;
+		    myNum = castedNum / 10.0;
 
-		    System.out.print("Rounding to the nearest tenth, it is: " + castedNum);
+		    System.out.print("Rounding to the nearest tenth, it is: " + myNum);
 		    in.close();
 	}
 
