@@ -49,16 +49,29 @@ public class GroceryShopping {
 		
 		totalPrice1 = itemPrice1 * itemQuantity1;
 		totalPrice2 = itemPrice2 * itemQuantity2;
+		double subtotal = totalPrice1 + totalPrice2;
+		double total = subtotal + (subtotal * TAX_RATE);
+		double tax = subtotal * TAX_RATE;
 		
+		System.out.println("This is your receipt:");
+		System.out.println("");
 		System.out.println("          Simon's Grocery");
 		System.out.println(formattedDate);
 		System.out.println("");
 		System.out.println("Item         |  Price    |  Quant.   |  Total Price");
 		System.out.println("---------------------------------------------------");
-		System.out.printf("%12s | $%8s |%10s | $%11s", item1, itemPrice1, itemQuantity1, totalPrice1);
+		System.out.printf("%-12s | %9s |%10s | %12s", item1, money.format(itemPrice1), itemQuantity1, money.format(totalPrice1));
 		System.out.println("");
-		System.out.printf("%12s | $%8s |%10s | $%11s", item2, itemPrice2, itemQuantity2, totalPrice2);
+		System.out.printf("%-12s | %9s |%10s | %12s", item2, money.format(itemPrice2), itemQuantity2, money.format(totalPrice2));
+		System.out.println("");
+		System.out.println("---------------------------------------------------");
+		System.out.printf("                          %8s: %8s", "Subtotal", money.format(subtotal));
+		System.out.println("");
+		System.out.printf("                          %8s: %8s", "Tax", money.format(tax));
+		System.out.println("");
+		System.out.printf("                          %8s: %8s", "Total", money.format(total));
 		
+		System.out.println("This is approximately $" + Math.rint(total));
 		
 		sc.close();
 
