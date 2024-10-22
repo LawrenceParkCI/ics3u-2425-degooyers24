@@ -21,16 +21,16 @@ public class GroceryShopping {
 		
 		//Declaring formatting
 		NumberFormat money = NumberFormat.getCurrencyInstance();
-		NumberFormat percent = NumberFormat.getPercentInstance();
 		
 		//Declaring Variables
 		final double TAX_RATE = 0.13;
 		String item1, item2;
-		double itemPrice1, itemPrice2, totalPrice1, totalPrice2;
+		double itemPrice1, itemPrice2, totalPrice1, totalPrice2, subtotal, total, tax;
 		int itemQuantity1, itemQuantity2;
 		
 		System.out.println("|| $$$ \\\\\\ ========== \"Simon's Grocery\" ========== /// $$$ ||");
 		System.out.println("");
+		//Taking user input
 		System.out.println("What would you like to buy?");
 		item1 = sc.next();
 		System.out.println("What is the price?");
@@ -47,12 +47,14 @@ public class GroceryShopping {
 		itemQuantity2 = sc.nextInt();
 		System.out.println("");
 		
+		//Determining the value of variables
 		totalPrice1 = itemPrice1 * itemQuantity1;
 		totalPrice2 = itemPrice2 * itemQuantity2;
-		double subtotal = totalPrice1 + totalPrice2;
-		double total = subtotal + (subtotal * TAX_RATE);
-		double tax = subtotal * TAX_RATE;
+		subtotal = totalPrice1 + totalPrice2;
+		total = subtotal + (subtotal * TAX_RATE);
+		tax = subtotal * TAX_RATE;
 		
+		//Print receipt 
 		System.out.println("This is your receipt:");
 		System.out.println("");
 		System.out.println("          Simon's Grocery");
@@ -70,8 +72,21 @@ public class GroceryShopping {
 		System.out.printf("                          %8s: %8s", "Tax", money.format(tax));
 		System.out.println("");
 		System.out.printf("                          %8s: %8s", "Total", money.format(total));
+		System.out.println("");
+		System.out.println("");
 		
-		System.out.println("This is approximately $" + Math.rint(total));
+		System.out.print("This is approximately $" + Math.rint(total));
+		
+		total = total * 20;
+		total = Math.rint(total);
+		total = total / 20;
+		
+		System.out.print(" or " + money.format(total));
+		System.out.println("");
+		
+		System.out.println("Thank you for shopping at Simon's Grocery!");
+		System.out.println("Have a great day!");
+		
 		
 		sc.close();
 
