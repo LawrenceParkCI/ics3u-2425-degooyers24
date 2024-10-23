@@ -5,9 +5,9 @@ package unit1;
  * @author Simon de Gooyer
  */
 
-import java.text.NumberFormat;             // Import NumberFormat class
-import java.util.Scanner;                  // Import Scanner class
-import java.time.LocalDateTime;            // Import Local Date Time class
+import java.text.NumberFormat;// Import NumberFormat class
+import java.util.Scanner;// Import Scanner class
+import java.time.LocalDateTime; // Import Local Date Time class
 import java.time.format.DateTimeFormatter; // Import LocalDateTime Formatter class
 
 public class GroceryShopping {
@@ -19,10 +19,10 @@ public class GroceryShopping {
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); //Creating DateTimeFormatter object.
 		String formattedDate = myDateObj.format(myFormatObj); //Creating String containing formatted date.
 		
-		//Declaring formatting
+		//Used for formatting
 		NumberFormat money = NumberFormat.getCurrencyInstance();
 		
-		//Declaring Variables
+		//Declaring variables
 		final double TAX_RATE = 0.13;
 		String item1, item2;
 		double itemPrice1, itemPrice2, totalPrice1, totalPrice2, subtotal, total, tax;
@@ -77,7 +77,7 @@ public class GroceryShopping {
 		
 		System.out.print("This is approximately $" + Math.rint(total));
 		
-		total = total * 20;
+		total = total * 20; //Rounding to the nearest 5 cents.
 		total = Math.rint(total);
 		total = total / 20;
 		
