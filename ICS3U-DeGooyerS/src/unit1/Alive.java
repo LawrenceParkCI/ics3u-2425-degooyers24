@@ -1,17 +1,18 @@
 package unit1;
+
+import java.util.Scanner;
+
 /**
  * Description: This programs the amount of time one has spend alive and asleep.
  * Date: Oct. 10, 2024
  * @author Simon de Gooyer
  */
 
-import java.util.Scanner;
-
 public class Alive {
 	
 	/**
 	 * This is the entry point to the program
-	 * @param args
+	 * @param args unused
 	 */
 
 	public static void main(String[] args) {

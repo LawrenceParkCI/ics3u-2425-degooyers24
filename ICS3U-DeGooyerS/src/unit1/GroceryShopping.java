@@ -1,16 +1,22 @@
 package unit1;
-/**
- * Description: Unit 1 final assignment
- * Date: Oct. 18, 2024
- * @author Simon de Gooyer
- */
 
 import java.text.NumberFormat;// Import NumberFormat class
 import java.util.Scanner;// Import Scanner class
 import java.time.LocalDateTime; // Import Local Date Time class
 import java.time.format.DateTimeFormatter; // Import LocalDateTime Formatter class
 
+/**
+ * Description: Unit 1 final assignment
+ * Date: Oct. 18, 2024
+ * @author Simon de Gooyer
+ */
+
 public class GroceryShopping {
+	
+	/**
+	 * This is the entry point to the program
+	 * @param args unused
+	 */
 
 	public static void main(String[] args) {
 		
