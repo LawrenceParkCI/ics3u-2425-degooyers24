@@ -3,7 +3,7 @@ package unit2;
 import java.util.Scanner;
 
 /**
- * Description:
+ * Description: This program asks the user 3 questions about triads, and keeps score of how many they get right.
  * Date: Nov. 13, 2024.
  * @author Simon de Gooyer
  */
