@@ -15,7 +15,7 @@ public class Randomness {
 
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
-		      System.out.println(((int)(Math.random()* 900)) +100);
+		      System.out.println(((int)(Math.random()* 901)) +100);
 		    }
 
 		    //Run the program a few times. What do you think is the 
