@@ -42,6 +42,8 @@ public class LoopChallenge1 {
 				System.out.println("That is incorrect. You may try again " + count + " more times.");
 			}
 		} while (i < 1 && count != 0);
+		
+		sc.close();
 
 	}
 
