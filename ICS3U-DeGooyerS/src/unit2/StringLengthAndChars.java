@@ -41,6 +41,7 @@ public class StringLengthAndChars {
 	    	System.out.println(username.charAt(nameIndex));
 	    	nameIndex++;
 	    }
+	    sc.close();
 
 	}
 

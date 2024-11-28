@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class LoopChallenge2 {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		/*
 	      Write a program to take the square root of a number typed in by 
 	      the user. Your program should use a loop to ensure that the number 
@@ -23,6 +24,7 @@ public class LoopChallenge2 {
 	      
 	      Use the loop that you didn't use in LoopChallenge1
 	    */
+		sc.close();
 
 	}
 
