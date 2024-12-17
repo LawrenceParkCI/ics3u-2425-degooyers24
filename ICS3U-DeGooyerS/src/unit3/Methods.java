@@ -56,6 +56,8 @@ public class Methods {
 	    System.out.println("Please enter another integer");
 	    int number2 = sc.nextInt();
 	    
+	    System.out.println("");
+	    
 	    System.out.println("The larger number is " + larger(number1, number2));
 	    
 	    sc.close();
