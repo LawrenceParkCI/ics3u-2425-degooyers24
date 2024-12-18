@@ -122,7 +122,7 @@ public class MathPlus {
 				factorCount++;
 			}
 		}
-		if (factorCount != 0) {
+		if (factorCount != 2) {
 			isPrime = false;
 		}
 		return isPrime;
