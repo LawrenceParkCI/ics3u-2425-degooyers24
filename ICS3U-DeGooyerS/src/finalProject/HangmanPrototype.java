@@ -49,6 +49,8 @@ public class HangmanPrototype {
 		System.out.println("Guessed letters: E, I, O, P, U");
 		System.out.println();
 		System.out.println("You have used all your guesses. The hanged man dies and you lose. Better luck next time!");
+		
+		sc.close();
 	}
 
 }
