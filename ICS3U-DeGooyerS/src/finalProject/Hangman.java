@@ -1,7 +1,5 @@
 package finalProject;
 
-import java.util.Scanner;
-
 import hsa_new.Console;
 
 /**
@@ -12,16 +10,14 @@ import hsa_new.Console;
 
 public class Hangman {
 	
+	static Console c = new Console(25, 100);
+	
 	/**
 	 * This is the entry point to the program
 	 * @param args unused
 	 */
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		Console c = new Console(25, 100);
-		
 		int incorrectGuessCount = 0; //This keeps track of the amount of incorrect guesses made by the user
 		boolean isTrue = false;
 		boolean gameCompletion = false; 
@@ -29,26 +25,43 @@ public class Hangman {
 		
 		c.println("Player 1, please enter a word while Player 2 looks away.");
 		String Word = c.readLine();
+		c.clear();
 		
 		String [] incorrectGuesses;
 		incorrectGuesses = new String[30];
 		
-		String [] wordProgress;
+		String [] wordProgress; //This array will show how many of each guessed letter are present in the word. It will use underscores to represent letters that have not been guessed yet.
 		wordProgress = new String[Word.length()];
 		
-		for (int i = 0; i <= Word.length() - 1; i++) {
+		for (int i = 0; i <= Word.length() - 1; i++) { //This loop sets every String in wordProgress to a single underscore
 			wordProgress[i] = "_";
 		}
 		
-		printHangman(incorrectGuessCount);
+		printHangman(incorrectGuessCount); //This will print the Hangman illustration. Since no guesses have been made and incorrectGuessCount can only equal 0, it will only print switch case 0.
+		
 		for (int i = 0; i <= Word.length() - 1; i++) { //This for loop prints out the word, using underscores to represent unrevealed letters, and letters to represent correctly guessed letters.
 			c.print(wordProgress[i] + " ");   //At this point, no letters have been guessed, so it only prints out underscores.
 		}
 		
+		boolean duplicateLetterCheck;
+		String input; //This will be used to store Player 2's most recent guess.
+		
 		do {
-			isTrue = false;
-			c.println("\nPlayer 2, please enter a letter.");
-			String input  = Character.toString(c.readLine().charAt(0)); 
+			do {
+				duplicateLetterCheck = false;
+				isTrue = false;
+				c.println("\nPlayer 2, please enter a letter.");
+				input = Character.toString(c.readLine().charAt(0)); 
+				
+				for (int i = 0; i <= incorrectGuessCount; i++) { //This loop makes sure Player 2 doesn't guess an incorrect letter twice.
+					if (input.equalsIgnoreCase(incorrectGuesses[i])) {
+						c.println("You have already guessed that letter! Please guess another.");
+						duplicateLetterCheck = true;
+					}
+				}
+			} while (duplicateLetterCheck == true);
+			
+			c.clear();
 			
 			/*
 			 * This takes only first character of the user's input, then converts it back to a string. 
@@ -59,12 +72,13 @@ public class Hangman {
 			for (int i = 0; i <= Word.length() - 1; i++) {
 				if (input.equalsIgnoreCase(Character.toString(Word.charAt(i)))) { 
 					wordProgress[i] = input;
+					c.println(input + " is in the word!");
 					wordCompletion++;
 					isTrue = true;
 				}
 			}
 			
-			if (isTrue == false) { //
+			if (isTrue == false) { //If input is not in the word, it is added to incorrectGuesses and incorrectGuessCount is increased by 1.
 				incorrectGuesses[incorrectGuessCount] = input;
 				incorrectGuessCount++;
 				c.println("Sorry, " + input + " is not in the word.\n");
@@ -94,18 +108,14 @@ public class Hangman {
 			
 		} while (gameCompletion == false);
 		
-		sc.close();
-
 	}
 	
 	/**
-	 * This method prints the Hangman illustration, the user's guessed letters, and progress made on the correct word.
+	 * This method prints the Hangman illustration. Different body parts are shown based on the amount of incorrect guesses made.
 	 * @param incorrectGuesses This is used to determine how many body parts of the hanged man to print.
 	 */
 	
 	public static void printHangman (int incorrectGuesses) {
-		Console c = new Console(25, 50);
-		c.clear();
 		switch(incorrectGuesses) {
 		case 0:
 			c.println(" _____      ");
