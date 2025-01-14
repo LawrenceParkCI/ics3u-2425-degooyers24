@@ -2,6 +2,14 @@ package finalProject;
 
 import hsa_new.Console;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 /**
  * Description: This program is played by two players, with one entering a word, and the other attempting to guess the word, one letter at a time. If the second player makes enough mistakes, they will lose. 
  * Date: Jan. 8, 2025
@@ -10,24 +18,44 @@ import hsa_new.Console;
 
 public class Hangman {
 	
-	static Console c = new Console(25, 100);
+	static Console c = new Console(100, 1000);
 	
 	/**
 	 * This is the entry point to the program
 	 * @param args unused
 	 */
 
-	public static void main(String[] args) {
-		int incorrectGuessCount = 0; //This keeps track of the amount of incorrect guesses made by the user
-		boolean isTrue = false;
-		boolean gameCompletion = false; 
-		int wordCompletion = 0;
+	public static void main(String[] args) throws InterruptedException {
+		 BufferedImage confettiJpg = null;
+		 
+		 Clip trombone = null;
+		 Clip incorrect = null;
+		 
+		 try {
+				confettiJpg = ImageIO.read(new File ("src/pictures/confetti.jpg"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		 
+		 try {
+			 trombone = AudioSystem.getClip();
+	         trombone.open(AudioSystem.getAudioInputStream(new File("src/sounds/sad_trombone.wav")));
+	         incorrect = AudioSystem.getClip();
+	         incorrect.open(AudioSystem.getAudioInputStream(new File("src/sounds/incorrect_buzzer.wav")));
+		 } catch (Exception e) {
+			 e.printStackTrace();
+		 }
 		
-		c.println("Player 1, please enter a word while Player 2 looks away.");
-		String Word = c.readLine();
+		int incorrectGuessCount = 0; //This keeps track of the amount of incorrect guesses made by the user
+		boolean gameCompletion = false; //This will become true when every letter of the word is guessed. User will win the game when true.
+		int wordCompletion = 0; //Once equal to Word.length, isTrue becomes true
+		boolean isTrue = false; //If false, incorrectGuessCount goes up and input is added to incorrectGuesses
+		
+		c.println("Player 1, please enter a word while Player 2 looks away. If you want to input a phrase, please use '-' instead of spaces.");
+		String Word = c.readLine(); //Player 1 inputs a word to guess
 		c.clear();
 		
-		String [] incorrectGuesses;
+		String [] incorrectGuesses; //Keeps track of guessed letters not present in Word
 		incorrectGuesses = new String[30];
 		
 		String [] wordProgress; //This array will show how many of each guessed letter are present in the word. It will use underscores to represent letters that have not been guessed yet.
@@ -82,6 +110,7 @@ public class Hangman {
 				incorrectGuesses[incorrectGuessCount] = input;
 				incorrectGuessCount++;
 				c.println("Sorry, " + input + " is not in the word.\n");
+				incorrect.loop(1);
 			}
 			
 			printHangman(incorrectGuessCount); //While only used once, a separate method is used here to make the program more readable.
@@ -99,10 +128,13 @@ public class Hangman {
 			
 			if (wordCompletion == Word.length()) { //This checks after every guess if the user has completed the word. 
 				gameCompletion = true;
+				c.clear();
+				c.drawImage (confettiJpg, -200, -300, 2500, 1500, null);
 				c.println("You guessed the word! You win!");
 			}
 			else if (incorrectGuessCount == 6) { //This checks after every guess if the user has guessed incorrectly enough times to lose.
 				c.println("You have used all your guesses. The hanged man dies and you lose. Better luck next time! The word was : " + Word);
+				trombone.loop(1);
 				gameCompletion = true;
 				}
 			
