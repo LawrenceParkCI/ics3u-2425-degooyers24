@@ -31,13 +31,13 @@ public class Hangman {
 		 Clip trombone = null;
 		 Clip incorrect = null;
 		 
-		 try {
+		 try { //This assigns an image file to 'confettiJpg'
 				confettiJpg = ImageIO.read(new File ("src/pictures/confetti.jpg"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		 
-		 try {
+		 try { //This assigns audio files to 'trombone' and 'incorrect'
 			 trombone = AudioSystem.getClip();
 	         trombone.open(AudioSystem.getAudioInputStream(new File("src/sounds/sad_trombone.wav")));
 	         incorrect = AudioSystem.getClip();
@@ -46,6 +46,7 @@ public class Hangman {
 			 e.printStackTrace();
 		 }
 		
+		int guessCount = 0;
 		int incorrectGuessCount = 0; //This keeps track of the amount of incorrect guesses made by the user
 		boolean gameCompletion = false; //This will become true when every letter of the word is guessed. User will win the game when true.
 		int wordCompletion = 0; //Once equal to Word.length, isTrue becomes true
@@ -57,6 +58,9 @@ public class Hangman {
 		
 		String [] incorrectGuesses; //Keeps track of guessed letters not present in Word
 		incorrectGuesses = new String[30];
+		
+		String [] guessedLetters; //Keeps track of all guessed letters.
+		guessedLetters = new String[30];
 		
 		String [] wordProgress; //This array will show how many of each guessed letter are present in the word. It will use underscores to represent letters that have not been guessed yet.
 		wordProgress = new String[Word.length()];
@@ -81,13 +85,17 @@ public class Hangman {
 				c.println("\nPlayer 2, please enter a letter.");
 				input = Character.toString(c.readLine().charAt(0)); 
 				
-				for (int i = 0; i <= incorrectGuessCount; i++) { //This loop makes sure Player 2 doesn't guess an incorrect letter twice.
-					if (input.equalsIgnoreCase(incorrectGuesses[i])) {
+				for (int i = 0; i <= guessCount; i++) { //This loop makes sure Player 2 doesn't guess a letter twice.
+					if (input.equalsIgnoreCase(guessedLetters[i])) {
 						c.println("You have already guessed that letter! Please guess another.");
 						duplicateLetterCheck = true;
 					}
+					
 				}
 			} while (duplicateLetterCheck == true);
+			
+			guessedLetters[guessCount] = input;
+			guessCount++;
 			
 			c.clear();
 			
